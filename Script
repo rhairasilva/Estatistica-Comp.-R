@@ -1,0 +1,71 @@
+#Observacao: na primeira linha, em dados, sera necessario mudar o endereco do arquivo!
+#UFPE - CCSA - Ciências Atuariais
+#Disciplina:Estatística Computacional
+#Aluna:Rhaíra Keitianne da Silva
+dados = read.table("C:/Users/rhsol/Desktop/Estudos/Ciencias Atuariais/periodo 4 - 2018.2/Estatística Computacional/Projeto 2/dados.txt", header = TRUE)
+attach(dados)
+set.seed(123)
+va = rnorm(nrow(dados), mean(v2), sd(v4))
+set.seed(321)
+vb = gl(2, runif(1, 2, 4), length = nrow(dados), labels = c("SIM", "NAO"))
+set.seed(000)
+vc = gl(3, runif(1, 3, 5), length = nrow(dados), labels = c("BAIXO", "NORMAL", "ALTO"))
+dados$va = va
+dados$vb = vb
+dados$vc = vc
+print(dados)
+#Variaveis quantitativas escolhidas: v1, v2, v3, sendo v1 a dependente
+#Variaveis qualitativas escolhidas: vb, vc
+barplot(table(vb, vc), beside = TRUE, main = "Distribuição da Variável B em relação a Variável C",
+    xlab = "Variável C", ylab="Variável B",
+col = c("lightpink2", "plum3"), legend.text = c("SIM", "NÃO"),
+    args.legend = list(x="top"))
+#tabela de contigencia 
+tabelavbvc = table(vb, vc)
+round(tabelavbvc/rowSums(tabelavbvc),2)
+#qui quadrado
+chisq.test(vb,vc)
+#variaveis quantitativas grafico de dispersao
+plot(v1~v2, main = "Gráfico de dispersão para as variáveis 1 e 2",
+xlab = "Variável 2", ylab = "Variável 1")
+plot(v1~v3, main = "Gráfico de dispersão para as variáveis 1 e 3",
+xlab = "Variável 3", ylab = "Variável 1")
+plot(v2~v3, main = "Gráfico de dispersão para as variáveis 2 e 3",
+xlab = "Variável 2", ylab = "Variável 3")
+#correlação
+cor(v1,v2)
+cor(v1,v3)
+cor.test(v1,v2)
+cor.test(v1,v3)
+cor(v2,v3)
+cor.test(v2,v3)
+#boxplot
+boxplot(v1~vb, main = "Box plot da Variável 1 segundo a Variável B", 
+xlab="Variável B", ylab = "Variável 1", col=c("springgreen3"))
+boxplot(v2~vb, main = "Box plot da Variável 2 segundo a Variável B", 
+xlab="Variável B", ylab = "Variável 2", col=c("slategray2"))
+boxplot(v3~vb, main = "Box plot da Variável 3 segundo a Variável B", 
+xlab="Variável B", ylab = "Variável 3", col=c("tomato3"))
+boxplot(v1~vc, main = "Box plot da Variável 1 segundo a Variável C", 
+xlab="Variável C", ylab = "Variável 1", col=c("thistle3"))
+boxplot(v2~vc, main = "Box plot da Variável 2 segundo a Variável C", 
+xlab="Variável C", ylab = "Variável 2", col=c("violet"))
+boxplot(v3~vc, main = "Box plot da Variável 3 segundo a Variável C", 
+xlab="Variável C", ylab = "Variável 3", col=c("lightsalmon1"))
+#describeby
+install.packages("psych")
+library(psych)
+describeBy(v1,vb)
+describeBy(v2,vb)
+describeBy(v3,vb)
+describeBy(v1,vc)
+describeBy(v2,vc)
+describeBy(v3,vc)
+#teste T
+t.test(v1,v2)
+t.test(v1,v3)
+t.test(v2,v3)
+#modelo
+modelo = lm(v1~v2+v3)
+summary(modelo)
+confint(modelo)

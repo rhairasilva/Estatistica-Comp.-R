@@ -1,0 +1,31 @@
+1. read.table(“endereço.txt”, header = TRUE/FALSE): cria um objeto do tipo data.frame (uma estrutura no formato de matriz na qual cada coluna contém valores de uma variável e cada linha contém um conjunto de valores de cada coluna) a partir do arquivo em formato de .txt. O header é um argumento para identificar a primeira linha como sendo o nome das colunas. O data.frame é um objeto no formato de uma matriz. Provavelmente será necessário mudar o endereço do arquivo em read.table, na linha 1, caso queira testar em outro computador!
+2. rnorm(n, mean, sd): gera n números aleatórios através de uma distribuição normal com média mean e desvio padrão sd.
+3. nrow(objeto): retorna o número de linhas de um objeto que tem dimensões.
+4. mean(objeto): retorna a média aritmética de um objeto.
+5. sd(objeto): retorna o desvião padrão de um objeto.
+7. attach(objeto): cria um objeto para cada uma das colunas do data.frame.
+8. data.frame$nome = nome: adiciona uma nova coluna “nome” de título “nome” ao data.frame “data.frame”. Usado em dados$va, dados$vb e dados$vc.
+12. gl(n, k, length, labels): gera um fator de n levels replicados k vezes em length linhas. Labels é opcional para dar nome aos levels.
+13. runif(n, min, max): gera n números aleatórios através de uma distribuição uniforme com mínimo min e máximo max.
+14. set.seed(n): função que define uma seed ("semente") utilizada para a geração dos valores aleatórios, onde n é um número.
+15. table(objeto): cria uma tabela de frequências absolutas de um objeto.
+16. barplot(barplot(dados contendo frequências, opções)): plota um gráfico de barras.
+16.1. beside: indica a posição das colunas no gráfico de barras, podendo ser TRUE ou FALSE.
+16.2. col = c("cor"): define as cores de preenchimento.
+16.3. main= "título": título principal do gráfico.
+16.4. legend.text = c("legenda"): legenda do gráfico.
+16.5. args.legend = list(x="posição"): posição da legenda no gráfico.
+16.6. xlab e ylab: título para as abscissas e coordenadas.
+17. round(numero, casas decimais): arredonda um número com a quantidade de casas decimais desejadas.
+18. chisq.test: Teste qui-quadrado de Pearson, tem como saída o qui-quadrado e p-valor resultantes.
+19. plot(objetos ou coordenadas dos pontos): uma função genérica para plotar objetos no R. Neste caso foi utilizado para plotar gráficos de dispersão.
+20. cor(objeto1, objeto2): calcula o coeficiente de correlação entre duas variáveis quantitativas.
+21. cor.test(objeto1, objeto2): realiza o teste de correlação e retorna o valor do t de Student e do p-valor.
+22. boxplot(dados, opções): plota o gráfico de caixa (boxplot) de um objeto.
+23. install.packages(pacote): instala um pacote.
+24. library(pacote): carrega um pacote.
+25. describeBy(quantitativa, qualitativa): retorna medidas descritivas de uma variavel quantitativa, segundo os grupos de uma qualitativa. 
+26. t.test(): realiza o teste T entre variáveis quantitativas.
+27. lm(variável dependente, variável independente): estima um modelo de regressão.
+28. summary(objeto): fornece um resumo sobre um objeto.
+29. confint(modelo): fornece os intervalos de confiança dos coeficientes de um modelo de regressão.
